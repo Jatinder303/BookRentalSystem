@@ -567,5 +567,20 @@ namespace BookRentalSystem
                 }
             }
         }
+
+        public DataTable BorrowBooks()
+        {
+           {
+                DataTable dt = new DataTable();
+                using (da = new SqlDataAdapter("BorrowBooks", Obj_Conn))
+                {
+                    Obj_Conn.Open();
+                    da.Fill(dt);
+                    Obj_Conn.Close();
+                }
+                return dt;
+            }
+           
+        }
     }
 }

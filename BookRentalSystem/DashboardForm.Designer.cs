@@ -36,6 +36,7 @@
             this.tab_Book = new System.Windows.Forms.TabPage();
             this.DGV_Books = new System.Windows.Forms.DataGridView();
             this.tab_Rent = new System.Windows.Forms.TabPage();
+            this.DGV_Rent = new System.Windows.Forms.DataGridView();
             this.pnl_Customer = new System.Windows.Forms.Panel();
             this.btn_DeleteCustomer = new System.Windows.Forms.Button();
             this.btn_UpdateCustomer = new System.Windows.Forms.Button();
@@ -76,17 +77,24 @@
             this.btn_PopularBook = new System.Windows.Forms.Button();
             this.btn_AllBorrowedBooks = new System.Windows.Forms.Button();
             this.btn_AllBooks = new System.Windows.Forms.Button();
-            this.DGV_Rent = new System.Windows.Forms.DataGridView();
+            this.tab_Popular_Customer = new System.Windows.Forms.TabPage();
+            this.tab_Popular_Books = new System.Windows.Forms.TabPage();
+            this.DGV_Popular_Movie = new System.Windows.Forms.DataGridView();
+            this.DGV_PopularCustomer = new System.Windows.Forms.DataGridView();
             this.tabCtl_Dashboard.SuspendLayout();
             this.tab_Customer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_Customer)).BeginInit();
             this.tab_Book.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_Books)).BeginInit();
             this.tab_Rent.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DGV_Rent)).BeginInit();
             this.pnl_Customer.SuspendLayout();
             this.pnl_Book.SuspendLayout();
             this.pnl_Rent.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DGV_Rent)).BeginInit();
+            this.tab_Popular_Customer.SuspendLayout();
+            this.tab_Popular_Books.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DGV_Popular_Movie)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DGV_PopularCustomer)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_Back
@@ -120,6 +128,8 @@
             this.tabCtl_Dashboard.Controls.Add(this.tab_Customer);
             this.tabCtl_Dashboard.Controls.Add(this.tab_Book);
             this.tabCtl_Dashboard.Controls.Add(this.tab_Rent);
+            this.tabCtl_Dashboard.Controls.Add(this.tab_Popular_Customer);
+            this.tabCtl_Dashboard.Controls.Add(this.tab_Popular_Books);
             this.tabCtl_Dashboard.Location = new System.Drawing.Point(0, 0);
             this.tabCtl_Dashboard.Name = "tabCtl_Dashboard";
             this.tabCtl_Dashboard.SelectedIndex = 0;
@@ -184,6 +194,18 @@
             this.tab_Rent.Size = new System.Drawing.Size(1180, 266);
             this.tab_Rent.TabIndex = 2;
             this.tab_Rent.Text = "Book Rented";
+            // 
+            // DGV_Rent
+            // 
+            this.DGV_Rent.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DGV_Rent.Location = new System.Drawing.Point(16, 7);
+            this.DGV_Rent.Name = "DGV_Rent";
+            this.DGV_Rent.RowHeadersWidth = 51;
+            this.DGV_Rent.RowTemplate.Height = 24;
+            this.DGV_Rent.Size = new System.Drawing.Size(1138, 253);
+            this.DGV_Rent.TabIndex = 0;
+            this.DGV_Rent.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGV_Rent_SelectRow);
+            this.DGV_Rent.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGV_Rent_SelectRow);
             // 
             // pnl_Customer
             // 
@@ -594,6 +616,7 @@
             this.btn_AllBorrowedBooks.TabIndex = 8;
             this.btn_AllBorrowedBooks.Text = "Borrowed Books";
             this.btn_AllBorrowedBooks.UseVisualStyleBackColor = false;
+            this.btn_AllBorrowedBooks.Click += new System.EventHandler(this.btn_AllBorrowedBooks_Click);
             // 
             // btn_AllBooks
             // 
@@ -606,18 +629,49 @@
             this.btn_AllBooks.TabIndex = 7;
             this.btn_AllBooks.Text = "All Books";
             this.btn_AllBooks.UseVisualStyleBackColor = false;
+            this.btn_AllBooks.Click += new System.EventHandler(this.btn_AllBooks_Click);
             // 
-            // DGV_Rent
+            // tab_Popular_Customer
             // 
-            this.DGV_Rent.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DGV_Rent.Location = new System.Drawing.Point(16, 7);
-            this.DGV_Rent.Name = "DGV_Rent";
-            this.DGV_Rent.RowHeadersWidth = 51;
-            this.DGV_Rent.RowTemplate.Height = 24;
-            this.DGV_Rent.Size = new System.Drawing.Size(1138, 253);
-            this.DGV_Rent.TabIndex = 0;
-            this.DGV_Rent.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGV_Rent_SelectRow);
-            this.DGV_Rent.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGV_Rent_SelectRow);
+            this.tab_Popular_Customer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.tab_Popular_Customer.Controls.Add(this.DGV_PopularCustomer);
+            this.tab_Popular_Customer.Location = new System.Drawing.Point(4, 25);
+            this.tab_Popular_Customer.Name = "tab_Popular_Customer";
+            this.tab_Popular_Customer.Padding = new System.Windows.Forms.Padding(3);
+            this.tab_Popular_Customer.Size = new System.Drawing.Size(1180, 266);
+            this.tab_Popular_Customer.TabIndex = 3;
+            this.tab_Popular_Customer.Text = "Popular Customer";
+            // 
+            // tab_Popular_Books
+            // 
+            this.tab_Popular_Books.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.tab_Popular_Books.Controls.Add(this.DGV_Popular_Movie);
+            this.tab_Popular_Books.Location = new System.Drawing.Point(4, 25);
+            this.tab_Popular_Books.Name = "tab_Popular_Books";
+            this.tab_Popular_Books.Padding = new System.Windows.Forms.Padding(3);
+            this.tab_Popular_Books.Size = new System.Drawing.Size(1180, 266);
+            this.tab_Popular_Books.TabIndex = 4;
+            this.tab_Popular_Books.Text = "Popular Movie";
+            // 
+            // DGV_Popular_Movie
+            // 
+            this.DGV_Popular_Movie.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DGV_Popular_Movie.Location = new System.Drawing.Point(12, 15);
+            this.DGV_Popular_Movie.Name = "DGV_Popular_Movie";
+            this.DGV_Popular_Movie.RowHeadersWidth = 51;
+            this.DGV_Popular_Movie.RowTemplate.Height = 24;
+            this.DGV_Popular_Movie.Size = new System.Drawing.Size(1143, 235);
+            this.DGV_Popular_Movie.TabIndex = 0;
+            // 
+            // DGV_PopularCustomer
+            // 
+            this.DGV_PopularCustomer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DGV_PopularCustomer.Location = new System.Drawing.Point(12, 16);
+            this.DGV_PopularCustomer.Name = "DGV_PopularCustomer";
+            this.DGV_PopularCustomer.RowHeadersWidth = 51;
+            this.DGV_PopularCustomer.RowTemplate.Height = 24;
+            this.DGV_PopularCustomer.Size = new System.Drawing.Size(1131, 233);
+            this.DGV_PopularCustomer.TabIndex = 0;
             // 
             // DashboardForm
             // 
@@ -644,13 +698,17 @@
             this.tab_Book.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DGV_Books)).EndInit();
             this.tab_Rent.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.DGV_Rent)).EndInit();
             this.pnl_Customer.ResumeLayout(false);
             this.pnl_Customer.PerformLayout();
             this.pnl_Book.ResumeLayout(false);
             this.pnl_Book.PerformLayout();
             this.pnl_Rent.ResumeLayout(false);
             this.pnl_Rent.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DGV_Rent)).EndInit();
+            this.tab_Popular_Customer.ResumeLayout(false);
+            this.tab_Popular_Books.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.DGV_Popular_Movie)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DGV_PopularCustomer)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -706,5 +764,9 @@
         private System.Windows.Forms.DataGridView DGV_Customer;
         private System.Windows.Forms.DataGridView DGV_Books;
         private System.Windows.Forms.DataGridView DGV_Rent;
+        private System.Windows.Forms.TabPage tab_Popular_Customer;
+        private System.Windows.Forms.DataGridView DGV_PopularCustomer;
+        private System.Windows.Forms.TabPage tab_Popular_Books;
+        private System.Windows.Forms.DataGridView DGV_Popular_Movie;
     }
 }

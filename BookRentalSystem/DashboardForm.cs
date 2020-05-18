@@ -259,5 +259,24 @@ namespace BookRentalSystem
                 MessageBox.Show("Please Fill all the fields related to Customer");
             }
         }
+
+        private void btn_AllBorrowedBooks_Click(object sender, EventArgs e)
+        {
+            DGV_Books.DataSource = null;
+            try
+            {
+                DGV_Books.DataSource = Obj_Data.BorrowBooks();
+                DGV_Books.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btn_AllBooks_Click(object sender, EventArgs e)
+        {
+            Book_Load();
+        }
     }
 }
