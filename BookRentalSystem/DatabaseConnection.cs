@@ -579,8 +579,33 @@ namespace BookRentalSystem
                     Obj_Conn.Close();
                 }
                 return dt;
+           }
+        }
+
+        public DataTable PopularCustomer()
+        {
+            DataTable dt = new DataTable();
+            QueryString = "select * From Popular_Customer";
+            using (da = new SqlDataAdapter(QueryString, Obj_Conn))
+            {
+                Obj_Conn.Open();
+                da.Fill(dt);
+                Obj_Conn.Close();
             }
-           
+            return dt;
+        }
+
+        public DataTable PopularBook()
+        {
+            DataTable dt = new DataTable();
+            QueryString = "select * From Popular_books";
+            using (da = new SqlDataAdapter(QueryString, Obj_Conn))
+            {
+                Obj_Conn.Open();
+                da.Fill(dt);
+                Obj_Conn.Close();
+            }
+            return dt;
         }
     }
 }

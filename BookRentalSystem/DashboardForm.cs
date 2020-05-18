@@ -278,5 +278,33 @@ namespace BookRentalSystem
         {
             Book_Load();
         }
+
+        private void btn_PopularBook_Click(object sender, EventArgs e)
+        {
+            DGV_Popular_Movie.DataSource = null;
+            try
+            {
+                DGV_Popular_Movie.DataSource = Obj_Data.PopularBook();
+                DGV_Popular_Movie.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btn_PopularCust_Click(object sender, EventArgs e)
+        {
+            DGV_PopularCustomer.DataSource = null;
+            try
+            {
+                DGV_PopularCustomer.DataSource = Obj_Data.PopularCustomer();
+                DGV_PopularCustomer.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }
